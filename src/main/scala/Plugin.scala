@@ -13,7 +13,7 @@ class Plugin extends gitbucket.core.plugin.Plugin {
 
   override def javaScripts(registry: PluginRegistry, context: ServletContext, settings: SystemSettingsService.SystemSettings): Seq[(String, String)] = {
     val jsPath = settings.baseUrl.getOrElse(context.getContextPath) + "/plugin-assets/fileicon/entry.js"
-    Seq(".*" ->
+    Seq(""".*/(?!.*(signin|dashboard|admin)).+/.+""" ->
       s"""</script>
         |<script src="${jsPath}">""".stripMargin)
   }
