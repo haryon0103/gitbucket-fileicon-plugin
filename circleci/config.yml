@@ -40,3 +40,12 @@ jobs:
 
       # run tests!
       - run: cat /dev/null | sbt test:test
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build:
+        filters:
+          branches:
+            only: bugfix-showing-javascript-contents-when-signed-in
